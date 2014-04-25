@@ -144,7 +144,13 @@ jQuery(document).ready(function($) {
 		}
 	}
 
-	$.getJSON('http://socialmart.ru/'+window.location.search+'&json=2', function(data){
+  if (window.location.search != '') {
+    var url = 'http://socialmart.ru/'+window.location.search + '&json=2';
+  } else {
+    var url = 'http://socialmart.ru/?json=2';
+  }
+
+	$.getJSON( url, function(data){
     model_data = data.models[0];
 
     if (typeof data.selector === 'string' ) {
