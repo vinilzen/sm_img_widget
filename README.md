@@ -29,8 +29,8 @@ js/test.js - скрипт для встраивания на сайты парт
 Забираем JSON тут http://dev.socialmart.ru/?json=2,  где 2 - количество моделей.
 ```javascript
 {
-  "selector": "",
-  "models": [{
+  "selector": ".postbody img:first",
+  "models": [[{
     "vendor": "LG",
     "name": "Nexus 5 16Gb",
     "mainPhoto": "http:\/\/mdata.yandex.net\/i?path=b1101194043_img_id1514955707961763939.jpeg",
@@ -48,6 +48,6 @@ js/test.js - скрипт для встраивания на сайты парт
     "priceCurrName": "\u0440",
     "offersCount": "40",
     "url": "http:\/\/dev.socialmart.ru\/product\/7717687\/Apple-iPhone-4S-64Gb?utm_source=smwi-test&utm_id=7717687"
-  }]
+  }]]
 }
 ```
