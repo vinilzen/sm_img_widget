@@ -90,7 +90,7 @@ jQuery(document).ready(function($) {
 				setTimeout(remove_widget, 500);
 			});
 
-		} else console.log('слишком маленькое изображение', w);
+		} else console.log('слишком маленькое изображение', w ,h , min_img_width, min_widget_height * min_img_procent_height );
 	}
 
 	function add_widget(img) {
@@ -145,13 +145,14 @@ jQuery(document).ready(function($) {
 	}
 
 	$.getJSON('http://dev.socialmart.ru/?json=2', function(data){
-		model_data = data.models;
+    model_data = data.models[0];
 
-		if (typeof data.selector === 'string' ) {
-			start(data.selector);
-		} else if (typeof data.selector === 'object' && data.selector.length > 0) {
-			data.selector.forEach(function(s){
-				start(s);
+    if (typeof data.selector === 'string' ) {
+      start(data.selector);
+    } else if (typeof data.selector === 'object' && data.selector.length > 0) {
+      data.selector.forEach(function(s, i){
+		    model_data = data.models[i];
+        start(s);
 			});
 		}
 	});
