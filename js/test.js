@@ -112,19 +112,27 @@ jQuery(document).ready(function($) {
           bottom: 0
         });
 
+      saveStat();
+
       return true;
     } else {
       return false;
     }
   }
 
-  if (window.location.search != '') {
-    var url = 'http://socialmart.ru/' + window.location.search + '&json=2';
-  } else {
-    var url = 'http://socialmart.ru/?json=2';
+
+  function saveStat(){
+      if (mixpanel !== undefined) {
+          mixpanel.track("smwi widget hit", {"url": document.URL});
+      }
   }
 
-  $.getJSON(url, function(data) {
+  $('head').append($('<link/>', {
+      'href': swmi ? smwi.cssLinkPath : '' + 'css/style.css?v=' + Math.round(+new Date() / 1000),
+      'rel': 'stylesheet'
+  }));
+
+  $.getJSON('http://socialmart.ru/?json=2', function(data) {
     model_data = data.models[0];
 
     if (typeof data.selector === 'string') {
